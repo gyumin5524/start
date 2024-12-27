@@ -37,7 +37,7 @@
 
 #5. 재귀 함수를 사용하여 팩토리얼(n!)을 계산하는 함수 **`factorial`**을 작성하세요.
 # def factorial(n):
-#     if n == 0:
+#     if n == 0 or n == 1:
 #         return 1
 #     else:
 #         return n * factorial(n-1)
