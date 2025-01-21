@@ -101,9 +101,9 @@
 
 
 # 10. 다음과 같은 패턴을 출력하는 프로그램을 작성하세요.
-def print_pattern():
-    print("패턴 출력:")
-    for i in range(1, 6):
-        print("*" * i)
+# def print_pattern():
+#     print("패턴 출력:")
+#     for i in range(1, 6):
+#         print("*" * i)
 
-print_pattern()
+# print_pattern()
