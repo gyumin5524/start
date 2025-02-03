@@ -25,6 +25,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('post/', include('post.urls')),
-    path('user/', include('user.urls'))
+    path('post/', include('post.urls')), # post앱의 urls.py로 연결
+    #path('user/', include('user.urls'))  # user앱의 urls.py로 연결
 ]
