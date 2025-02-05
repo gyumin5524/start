@@ -42,7 +42,7 @@ class PostUpdate(APIView):
 
 
 class PostDelete(APIView):
-    def delete(self, requset, pk):
+    def delete(self, request, pk):
         # 처리 - id값을 이용해서 삭제
         # 1. id값을 통해서 해당 객체 가져오기
         post = Post.objects.get(id = pk)
