@@ -3,7 +3,7 @@
 # Django의 ORM(Object-Relational Mapping)을 사용하여 테이블과 필드 정의를 작성합니다.
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=50)

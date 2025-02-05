@@ -20,8 +20,8 @@ class PostList(APIView):
 class PostWrite(APIView):
     def post(self, request):
         #응답 역직렬화, json데이터 -> raw데이터 
-        serializer = PostSerializer(data = request.data)
-        #사용자에게 받은 값은 유효성 검증이 필수
+        serializer = PostSerializer(data = request.data) # data = 들어가면 역직렬화
+        #사용자에게 받은 값은 유효성 검증이 필수(악성데이터인지 아닌지)
         if serializer.is_valid():
             serializer.save() #True, 저장
             return Response(serializer.data, status = status.HTTP_201_CREATED)
