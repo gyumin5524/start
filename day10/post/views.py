@@ -57,6 +57,7 @@ class PostUpdate(APIView):
         return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
     
     def patch(self, request, pk):
+
         post = get_object_or_404(Post, id = pk) # <-디비
         data = request.data # <- 사용자한테서
         serializer = PostSerializer(post, partial=data) # partial 부분수정
@@ -72,7 +73,7 @@ class PostDelete(APIView):
         # 처리 - id값을 이용해서 삭제
         # 1. id값을 통해서 해당 객체 가져오기
         post = get_object_or_404(Post, id = pk)
-        Post.objects.get()
+        # Post.objects.get()
         # 2. 삭제하기 
         post.delete()
     
