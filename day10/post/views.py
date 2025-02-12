@@ -125,7 +125,7 @@ class PostDetailView(APIView):
 
         post = get_object_or_404(Post, id = pk)
         data = request.data
-        serializer = PostSerializer(post, partial=data)
+        serializer = PostSerializer(post, data=data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status = status.HTTP_201_CREATED)
