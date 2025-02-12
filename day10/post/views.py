@@ -80,3 +80,60 @@ class PostDelete(APIView):
         return Response({"message": "게시글이 삭제되었습니다."}, status = status.HTTP_204_NO_CONTENT)
 
 
+
+
+
+# Day17
+class PostListCreateView(APIView):
+    # list
+    def get(self, request):
+        posts = Post.objects.all()
+        serializer = PostSerializer(posts, many=True)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    # write
+    def post(self, request):
+        data = request.data
+        serializer = PostSerializer(data = data)
+        if serializer.is_valid():
+            serializer.save() 
+            return Response(serializer.data, status = status.HTTP_201_CREATED)
+        
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+
+
+class PostDetailView(APIView):
+    # detail
+    def get(self, request, pk):
+        post = get_object_or_404(Post, id = pk)
+        serializer = PostSerializer(post)
+        
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    # update
+    def put(self, request, pk):
+        post = get_object_or_404(Post, id = pk)
+        data = request.data
+        serializer = PostSerializer(post, data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_201_CREATED)
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+    
+    def patch(self, request, pk):
+
+        post = get_object_or_404(Post, id = pk)
+        data = request.data
+        serializer = PostSerializer(post, partial=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_201_CREATED)
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+    
+    # delete
+    def delete(self, request, pk):
+        post = get_object_or_404(Post, id = pk)
+        post.delete()
+    
+        return Response({"message": "게시글이 삭제되었습니다."}, status = status.HTTP_204_NO_CONTENT)
