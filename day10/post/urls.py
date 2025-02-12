@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import PostWrite, PostList, PostDetail, PostUpdate, PostDelete
-from .views import PostListCreateView, PostDetailView
+
 # 패턴 맵핑
 urlpatterns = [
     path('write/', PostWrite.as_view()),            # as_view는 클래스뷰를 끌어땡겨 쓰려고 사용
@@ -14,7 +14,8 @@ urlpatterns = [
 # /post
 # /post/1
 
-
+# day17
+from .views import PostListCreateView, PostDetailView
 urlpatterns = [
     path('', PostListCreateView.as_view()),
     path('<int:pk>/', PostDetailView.as_view()),
