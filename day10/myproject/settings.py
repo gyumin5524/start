@@ -47,10 +47,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    
+    'rest_framework.authtoken', # user/models token 작성하고 python manage.py migrate 하기
     'user',
     'post',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication'
+    ]
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
